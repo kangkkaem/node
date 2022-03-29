@@ -1,0 +1,71 @@
+
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+     font-family: 'Cafe24SsurroundAir';
+}
+
+#center{width: 1100px; height: 950px;}
+
+
+* {margin:0px; padding:0px;}
+body {width:1100px;margin:0px auto;background: gray; height: 1200px;}
+#page {background: white; height: 1500px;}
+#bottom {padding-bottom: 50px;}
+h1, h5, h3 {text-align: center; padding: 10px;}
+table {margin:0px auto; margin-top: 50px; border-collapse: collapse;}
+td, th { padding:10px;}
+#buttons {width: 600px; margin:0px auto; text-align:center; padding:20px;}
+#buttons .button, button { /*버튼 스타일*/
+    width:80px; 
+    padding:5px; 
+    background:black; 
+    color:white;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+input[type="text"], input[type="password"] 
+{ padding: 5px;border:1px solid gray; }
+
+a {text-decoration: none; }
+a:hover {color: red;}
+
+.row:hover {background: gray; color: white; cursor: pointer;}
+.title { color: black; text-align: center;}
+
+#menu {
+   
+    padding: 10px;
+    height: 40px;
+    background: black;
+    margin: auto 0px;
+}
+
+.small {
+    width:40px;
+    padding:3px 3px; 
+    background:red; 
+    color:white;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+    font-size:10px;
+    margin-right:10px;
+}
+
+button:disabled { /*버튼 스타일*/
+    width:80px; 
+    padding:5px; 
+    background:gray; 
+    color:white;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+}

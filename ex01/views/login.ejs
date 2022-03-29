@@ -1,0 +1,56 @@
+<form name ="frm">
+    <table id = "tb">
+        <tr>
+            <td class ="title"  width =300 colspan="2">
+                <h4 style="color: white;">로그인</h4>
+            </td>
+        </tr>
+        <tr>
+            <td class= "title" width=100>아이디</td>
+            <td width=200><input type ="text" name ="id"></td>
+        </tr>
+        <tr>
+            <td class ="title"  >비밀번호</td>
+            <td width =200><input type = "password" name ="pass"></td>
+        </tr>
+    </table>
+    <div id ="buttons">
+        <input type ="submit" value ="로그인 " class ="button">
+        <input type ="reset" value ="비밀번호 찾기 " class ="button">
+        <input type ="reset" value ="회원가입 " class ="newUser">
+
+    </div>
+</form>
+<script>
+    $(frm).on("submit", function(e){
+        e.preventDefault();
+        var id =$(frm.id).val();
+        var pass =$(frm.pass).val();
+        if(id==""){
+            alert("아이디를 입력하세요!");
+            $(frm.id).focus();
+        }else if(pass==""){
+            alert("비밀번호를 입력하세요!");
+            $(frm.pass).focus();
+        }else {
+            $.ajax({
+                type : "post",
+                dataType: "json",
+                data : {id:id, pass:pass},
+                url : "/users/login",
+                success:function(data){
+                    if(data.result==0){
+                        alert("아이디가 존재하지않습니다.");
+                        $(frm.id).focus();
+                    }else if(data.result==2){
+                        alert("비밀번호가 일치하지않습니다.");
+                        $(frm.pass).focus();
+                    }else {
+                        alert("로그인 성공!")
+                        location.href="/";
+                    }
+                }
+            })
+        }
+    })
+</script>

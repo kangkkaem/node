@@ -1,0 +1,80 @@
+
+<div id ="box">
+    <div id ="left1">
+        <div id ="image">
+            <img src="/images/<%=vo.image%>">
+        </div>
+    </div>
+    <div id ="right1">
+        <div id ="info">
+            <div id ="tit">
+                <p style="padding: 10px; font-size: large;  font-family: 'IBMPlexSansKR-Regular'; font-weight: bold;">[도서판매] <%=vo.title%></p>
+                <p style=" padding: 10px; margin-top :4px; font-family: 'IBMPlexSansKR-Regular'; font-size: small;">부자들만 아는 6가지 기적의 아침 습관</p>
+            </div>
+            <hr>
+            <ui id ="ui">
+                <li>저자 : 할 엘로드 , 데이비드 오스본</li>
+                <li>번역 : 이주만</li>
+                <li>출간 : 2010-04-01</li>
+                <li>페이지 : 360쪽</li>
+            </ui>
+            <hr>
+             <div id ="p1">
+                <div id ="left2">
+                    <p style="padding: 10px; font-size:15px; margin-top: 10px;  font-family: 'IBMPlexSansKR-Regular';">총 상품금액</p>
+                </div>
+                <div id ="right2" style="padding: 10px; font-size:15px; margin-top: 10px;  font-family: 'IBMPlexSansKR-Regular';" >
+                <%=vo.fprice%>원
+                </div>
+            </div> 
+             <div id ="p1">
+                <div id ="left2">
+                    <p style="padding: 10px; font-size:large;  font-family: 'IBMPlexSansKR-Regular' ; font-weight: bold;">총 합계금액</p>
+                </div>
+                <div id ="right2" style="padding: 10px; font-size:large;  font-family: 'IBMPlexSansKR-Regular' ; font-weight: bold;">
+                    <%=vo.fprice%>원
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div id ="buttons">
+            <button>장바구니</button>
+            <button>바로구매</button>
+        </div>
+    </div>
+</div>
+<div style ="width:800px; height: 60px; margin:0px auto; margin-top:20px;">
+    <button id ="btnInsert" style="float: right; background: yellowgreen;">리뷰쓰기</button>
+</div>
+<div id ="review"></div>
+<script id="temp" type="text/x-handlebars-template">
+    
+    <div id ="d">
+        <p id ="d1"> | </p>
+        <p id ="d2">★★★★★</p>
+        <p id ="d3"></p>
+        
+    </div>
+    
+    
+</script>
+
+<script>
+    var code ="<%=vo.code%>";
+    getBook();
+    function getBook(){
+        $.ajax({
+            type :"get",
+            dataType:"json",
+            url: "/review/list",
+            data : {code:code},
+            success:function(data){
+                var template = Handlebars.compile($("#temp").html());
+                $("#review").html(template(data));
+
+            }
+
+        });
+    }
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    <title>한빛미디어</title>
+    <link rel='stylesheet' href='/stylesheets/common.css' />
+    <style>
+      h3 {padding-top: 40px; margin-left: 3px;}
+      #menu button {background: white; color: black; font-weight: bolder; border-radius: 20px; margin: auto 0px; padding:4px;
+         margin-top: 8px;}
+      #login { color: white;font-weight: bolder;margin: auto 0px; padding:5px;  margin-left: 15px; margin-top: 8px; text-align: center;}
+      table {margin-top: 20px;}
+      #td {width: 500px;}
+    </style>
+  </head>
+  <body>
+    <div id="page">
+      <div id="top">
+        <div id="menu">
+          <a href="/"><button>Home</button></a>
+          <span style="float:right" id ="login">
+            <% if(userid != null) { %>
+              <%=userid%>  님
+              <a href="/users/logout" id ="login" style="color: rgb(230, 114, 114);">로그아웃</a>
+            <% }else { %>
+              <a href="/users/login"id ="login" >로그인</a>  
+            <% } %>  
+          </span>
+        </div>
+        <table>
+          <tr>
+            <td ><h1>한빛 미디어</h1></td>
+            <td id ="td"></td>
+            <td ><h3><a href="/book/insert">도서등록</a></h3></td>
+            
+            <td ><h3><a href="/">도서목록</a></h3></td>
+           
+            
+          </tr>
+          </table>
+        
+        
+        <img src="/images/back.jpg" style="width:1100px">
+      </div>
+      
+      <div id="center">
+        <%-include(pageName)%>
+      </div>
+      <div id="bottom">
+        <h3>Copyright 2022. 한빛미디어 All Right Reserved.</h3>
+      </div>
+    </div>
+  </body>
+</html>

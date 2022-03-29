@@ -1,0 +1,223 @@
+<style>
+    #bookinfo {margin-bottom:10px; text-align: center; margin:0px auto; padding:10px;}
+     #box { margin-left:30px; padding:10px;  height:400px; margin-right:40px;  margin-top: 30px;}
+     #left1 {float:left; margin:0px auto; width :30%; text-align: center; margin-left:40px; margin-top:20px; }
+     #left2 {float:left; }
+     #right2 {float:right;  }
+     #p1{height:40px;}
+     #buttons{float:right;}
+     img{width:250px; margin:0px auto;}
+     #side_content_box {padding:10px;}
+     #side_content_box li { margin-bottom:10px;}
+     #info { margin-left: 10px;}
+     #rig {float:left; width:10%;}
+     #side_left{
+         width:280px;
+         height:400px;
+         margin-left:10px;
+         float:left;
+         margin:5px;
+         }
+         
+         #mid_content{
+         width:400px;
+         height:400px;
+         padding-left:20px;
+         float:left;
+         margin:5px;
+         margin-left:30px; 
+         border-left:1px solid gray; 
+         }
+     
+         #side_content_box{
+         display: inline;
+         
+         margin:5px;
+         }
+         
+         #side_rigth{
+         width:250px;
+         height:400px;
+         
+         float:left;
+         margin:5px;
+         }
+         #side_rigth_box{
+         height:40px;
+         margin:5px;
+             padding:10px;
+             margin-top :30px;
+         }
+         
+         #right-top {
+             margin:10px;
+             padding:10px;
+             background:rgb(71, 197, 149);
+             color: white;
+         }
+         #right-top p { padding:10px; font-weight:bold; }
+         
+         #cart, #wish {float:left; background: rgb(200, 193, 193); color:black; font-weight:bold; border:1px black solid; height:50px; width:47%; font-size :large; border: none;}
+         #wish {float: right; }
+         #btn2 {
+         height:40px;
+         margin:5px;
+             padding:10px;
+             margin-top :20px;
+            
+         }
+         #buy {font-size :large; background:rgb(168, 158, 158); color:white; width:96%; height:100px;font-weight:bold;  background: rgb(43, 42, 42);}
+ 
+         #d{ margin:0px auto; width: 70%; margin-top: 5px; padding:10px; }
+         #d1{ border-top: solid 1px rgb(200, 192, 192); margin-top: 4px; padding: 4px;}
+         #d2 {margin-top: 5px;padding: 4px;}
+         #d3{margin-top: 5px;padding: 4px;}
+ </style>
+ 
+ <div id ="box">
+     <div id ="side_left">
+         <div id ="side_left_box">
+             <img src="/images/<%=vo.image%>">
+         </div>
+     </div>
+     <div id ="mid_content">
+         <div id ="side_content_box">
+             <p style="padding: 10px; font-size: large;  font-family: 'IBMPlexSansKR-Regular'; font-weight: bold;">[도서판매] <%=vo.title%></p>
+             <p style=" padding: 10px; margin-top :4px; font-family: 'IBMPlexSansKR-Regular'; font-size: small;">부자들만 아는 6가지 기적의 아침 습관</p>
+         </div>
+         <hr>
+         <ui id ="side_content_box">
+             <li>저자 : 할 엘로드 , 데이비드 오스본</li>
+             <li>번역 : 이주만</li>
+             <li>출간 : 2010-04-01</li>
+             <li>페이지 : 360쪽</li>
+         </ui>
+         <hr>
+             <div id ="p1">
+             <div id ="left2">
+                 <p style="padding: 10px; font-size:15px; margin-top: 10px;  font-family: 'IBMPlexSansKR-Regular';">총 상품금액</p>
+             </div>
+             <div id ="right2" style="padding: 10px; font-size:15px; margin-top: 10px;  font-family: 'IBMPlexSansKR-Regular';" >
+             <%=vo.fprice%>원
+             </div>
+         </div> 
+             <div id ="p1">
+             <div id ="left2">
+                 <p style="padding: 10px; font-size:large;  font-family: 'IBMPlexSansKR-Regular' ; font-weight: bold;">총 합계금액</p>
+             </div>
+             <div id ="right2" style="padding: 10px; font-size:large;  font-family: 'IBMPlexSansKR-Regular' ; font-weight: bold;">
+                 <%=vo.fprice%>원
+             </div>
+         </div>
+     </div>
+ 
+     <div id = "side_rigth">
+         <div id ="right-top">
+             <p > 정가 : <span style="text-decoration:line-through">30000원</span></p>
+             <p> 판매가 :  <%=vo.fprice%>원 </p>
+             <p> 마일리지 : 2000점 (5%) </p>
+         </div>
+         <div id = "side_rigth_box">
+             <div id ="btn1" >
+                 <div ><button id = "cart">장바구니</button></div>
+                 <div ><button id="wish">찜</button></div>
+             </div>
+         </div>
+         <div id ="btn2">
+                 <div><button id ="buy">구매하기</button></div>
+         </div>
+     </div>
+     
+ </div>
+         
+    <div style="width:850px; margin:0px auto; margin-top:0px ; margin-bottom: 10px;">
+        <textarea id="text" cols="100" rows=5 style="padding:20px;"></textarea>
+        <button id="btnInsert">리뷰쓰기</button>
+    </div>
+    <br>
+    <div id="review"></div>
+    <script id="temp" type="text/x-handlebars-template">
+        {{#each .}}
+        <div id ="d">
+            <p id ="d1">{{uid}} |  {{fdate}}</p>
+            <p id ="d2">★★★★★</p>
+            <p id ="d3"> {{text}} <button class="{{dispaly uid}}" reviewid="{{id}}">삭제</button></p>
+            
+            
+        </div>
+        {{/each}}
+    </script>
+ 
+<script>
+    Handlebars.registerHelper("dispaly", function(uid){
+        if(uid=="<%=userid%>"){
+            return "small";
+        }else {
+            return "noneSmall";
+        }
+    });
+</script>
+<script>
+    var code="<%=vo.code%>";
+    var userid="<%=userid%>";
+    getBook();
+
+    if(userid=="") {
+        $("#text").hide();
+    }else{
+        $("#text").show();
+    }
+
+    //삭제 버튼을 클릭한 경우
+    $("#review").on("click", "button", function(){
+        var id=$(this).attr("reviewid");
+        if(!confirm(id+"을(를) 삭제하실래요?")) return;
+        $.ajax({
+            type:"post",
+            url:"/review/delete",
+            data:{id:id},
+            success:function(){
+                alert("리뷰삭제완료!");
+                getBook();
+            }
+        });
+    });
+
+    $("#btnInsert").on("click", function(){
+        if(userid==""){
+            alert("로그인한 후 리뷰를 작성하세요!");
+            location.href="/users/login";
+        }else{
+            //리뷰작성
+            var text=$("#text").val();
+            if(text==""){
+                alert("리뷰 내용을 입력하세요!")
+            }else{
+                if(!confirm(`${code}-${userid}-${text}`)) return;
+                $.ajax({
+                    type:"post",
+                    url:"/review/insert",
+                    data:{code:code,uid:userid,text:text},
+                    success:function(){
+                        alert("리뷰등록완료!");
+                        getBook();
+                        $("#text").val("");
+                    }
+                });
+            }
+        }
+    });
+
+    function getBook(){
+        $.ajax({
+            type:"get",
+            dataType:"json",
+            url:"/review/list",
+            data:{code:code},
+            success:function(data){
+                var template = Handlebars.compile($("#temp").html());
+                $("#review").html(template(data));
+            }
+        })
+    }
+</script>
